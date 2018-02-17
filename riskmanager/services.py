@@ -1,6 +1,4 @@
 
-from riskmanager.users.services import PersonsService
-from riskmanager.groups.services import GroupsService
+from riskmanager.risks.services import RiskService
 
-_persons = PersonsService()
-_groups = GroupsService()
+risks = RiskService()

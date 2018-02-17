@@ -99,3 +99,7 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+main.min.js
+vendor.min.js
+*.db

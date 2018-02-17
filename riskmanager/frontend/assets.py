@@ -10,9 +10,9 @@ from flask_assets import Environment, Bundle
 
 
 #: consolidated css bundle
-css_all = Bundle("css/bootstrap.min.css", "css/address_book.css",
+css_all = Bundle("css/bootstrap.min.css", "css/risk_manager.css",
                  "css/bootstrap-responsive.min.css",
-                 filters="cssmin", output="css/address_book.min.css")
+                 filters="cssmin", output="css/risk_manager.min.css")
 
 #: vendor js bundle
 js_vendor = Bundle("js/vendor/jquery-1.10.1.min.js",
@@ -21,7 +21,7 @@ js_vendor = Bundle("js/vendor/jquery-1.10.1.min.js",
                    filters="jsmin", output="js/vendor.min.js")
 
 #: application js bundle
-js_main = Bundle("js/*.js", filters="jsmin", output="js/main.js")
+js_main = Bundle("js/*.js", filters="jsmin", output="js/main.min.js")
 
 
 def init_app(app):

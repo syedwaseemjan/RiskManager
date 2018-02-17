@@ -1,3 +1,2 @@
 
-from riskmanager.users.forms import *
-from riskmanager.groups.forms import *
+from riskmanager.risks.forms import *

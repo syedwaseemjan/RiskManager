@@ -1,4 +1,3 @@
 
 
-from riskmanager.users.models import *
-from riskmanager.groups.models import *
+from riskmanager.risks.models import *

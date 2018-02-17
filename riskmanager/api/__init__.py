@@ -9,13 +9,9 @@
 from functools import wraps
 
 from flask import jsonify
-from riskmanager.models import Admin
 from riskmanager.exceptions import RiskManagerError, RiskManagerFormError
 from riskmanager.utils import JSONEncoder
 from riskmanager import factory
-from flask_login import login_required, LoginManager
-
-login_manager = LoginManager()
 
 
 def create_app(settings_override=None, register_security_blueprint=False):
@@ -23,7 +19,6 @@ def create_app(settings_override=None, register_security_blueprint=False):
 
     app = factory.create_app(__name__, __path__, settings_override,
                              register_security_blueprint=register_security_blueprint)
-    login_manager.init_app(app)
     # Set the default JSON encoder
     app.json_encoder = JSONEncoder
 
@@ -40,7 +35,6 @@ def route(bp, *args, **kwargs):
 
     def decorator(f):
         @bp.route(*args, **kwargs)
-        @login_required
         @wraps(f)
         def wrapper(*args, **kwargs):
             sc = 200
@@ -64,13 +58,3 @@ def on_addressbook_form_error(e):
 
 def on_404(e):
     return jsonify(dict(error='Not found')), 404
-
-
-@login_manager.unauthorized_handler
-def unauthorized():
-    return jsonify({'error': 'Unauthorized access'}), 401
-
-
-@login_manager.user_loader
-def load_user(userid):
-    return Admin.query.get(userid)

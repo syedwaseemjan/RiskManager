@@ -1,17 +1,22 @@
-from flask import Blueprint, redirect,\
-    jsonify
-from flask_login import login_user
-from riskmanager.decorators import logout_required
-from riskmanager.forms import LoginForm
+from flask import Blueprint
+from riskmanager.api import route
+from riskmanager.services import risks
+from riskmanager.exceptions import RiskDoesNotExist
 
-bp = Blueprint('users', __name__)
+bp = Blueprint('risks', __name__, url_prefix='/risks')
 
 
-@bp.route('/login', methods=['POST'])
-@logout_required
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        login_user(form.user, remember=form.remember.data)
-        return redirect("/")
-    return jsonify({"success": False})
+@route(bp, '/', methods=['GET'])
+def list():
+    """Returns a list of risk instances."""
+    return risks.all()
+
+
+@route(bp, '/<risk_id>', methods=['GET'])
+def show(risk_id):
+    """Returns a risk instance."""
+    try:
+        risk = risks.get_or_404(risk_id)
+    except Exception:
+        raise RiskDoesNotExist
+    return risk

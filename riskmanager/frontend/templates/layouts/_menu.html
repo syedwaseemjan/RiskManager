@@ -7,7 +7,6 @@
         <span class="icon-bar"></span>
       </button>
       <a class="brand" href="#">Online Address Book</a>
-      {% if current_user.is_authenticated -%}
 	      <div class="nav-collapse collapse">
 	        <ul class="nav">
 	          <li class="active"><a href="{{url_for('dashboard.index')}}">Home</a></li>
@@ -15,16 +14,6 @@
 	          <li><a href="#contact">Contact</a></li>
 	        </ul>
 	      </div><!--/.nav-collapse -->
-      {%- endif %}
-      <div class="nav-collapse collapse pull-right">
-      	<ul class="nav">
-          {% if current_user.is_authenticated -%}
-    		    <li><a href="{{ url_for('dashboard.logout') }}">Logout</a></li>
-    		  {%- else -%}
-    		    <li><a href="{{ url_for('dashboard.login') }}">Login</a></li>
-    		  {%- endif %}
-        </ul>
-      </div>
     </div>
   </div>
 </div>
