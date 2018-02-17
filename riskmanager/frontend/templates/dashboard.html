@@ -1,0 +1,29 @@
+{% extends "layouts/boilerplate.html" %}
+
+{% block body %}
+  	
+  	<div class="section">
+		<a href="{{url_for('groups.new')}}">Add New Group</a> / <a href="{{url_for('persons.new')}}">Add New Person</a>
+  	</div>
+
+  	<div class="section search">
+		<div class="rowfluid">
+			<span>Enter Person Name:</span><input type="text"><button class="btn">Search</button>
+			<div class="found"><a hr></a></div>
+		</div>
+  	</div>
+
+	<div class="section">
+		<div class="rowfluid">
+			<div span="6"><ul id="grp-list-container"></ul></div>
+		</div>
+  	</div>
+
+	{% raw %}
+		<script id='grp-list-tpl' type="text/template">
+			<% _.each(data, function(acs) { %> 
+			    <li><a href="/groups/<%- acs.id %>"><%- acs.name %></a></li>
+			<% }); %>
+		</script>
+	{% endraw %}
+{% endblock %}

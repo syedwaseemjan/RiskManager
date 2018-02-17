@@ -1,0 +1,38 @@
+{% extends "layouts/boilerplate.html" %}
+
+{% block body %}
+  
+	<div class="row-fluid">
+		<div class="span10">
+			<div id="pshw" class="section">
+			</div>
+		</div>
+  	</div>
+
+  	{% raw %}
+		<script id='prs-show-tpl' type="text/template">
+			<h2>First Name: <%- first_name %></h2>
+			<h2>Last Name: <%- last_name %></h2>
+			<span>Addresses</span>
+			<% _.each(addresses, function(acs) { %> 
+			    <li><%- acs.address %></li>
+			<% }); %>
+
+			<span>Emails</span>
+			<% _.each(emails, function(acs) { %> 
+			    <li><%- acs.email %></li>
+			<% }); %>
+
+			<span>Phones</span>
+			<% _.each(phones, function(acs) { %> 
+			    <li><%- acs.phone %></li>
+			<% }); %>
+
+			<span>Groups</span>
+			<% _.each(groups, function(acs) { %> 
+			    <li><a href="/groups/<%- acs.id %>"><%- acs.name %></a></li>
+			<% }); %>
+		</script>
+	{% endraw %}
+
+{% endblock %}

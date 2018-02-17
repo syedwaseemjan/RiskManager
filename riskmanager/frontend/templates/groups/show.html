@@ -1,0 +1,22 @@
+{% extends "layouts/boilerplate.html" %}
+
+{% block body %}
+  
+	<div class="row-fluid">
+		<div class="span10">
+			<div id="gshw" class="section">
+			</div>
+		</div>
+  	</div>
+
+  	{% raw %}
+		<script id='grp-show-tpl' type="text/template">
+			<h2><%- name %></h2>
+			<span>List of Persons in this group</span>
+			<% _.each(persons, function(acs) { %> 
+			    <li><a href="/persons/<%- acs.id %>"><%- acs.first_name %></a></li>
+			<% }); %>
+		</script>
+	{% endraw %}
+
+{% endblock %}

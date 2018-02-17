@@ -1,0 +1,18 @@
+{% extends "layouts/boilerplate.html" %}
+
+{% block body %}
+  
+	<div class="row-fluid">
+
+		<div class="span10">
+
+			<div class="section">
+				{{form.name(class="span12 gname", placeholder="Group Name")}}
+			</div>
+
+			<button type="submit" class="span3 btn btn-primary pull-right ngrp">Add New Group</button>
+
+		</div>
+
+  	</div>
+{% endblock %}

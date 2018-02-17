@@ -1,0 +1,14 @@
+{% from "macro.html" import render_field %}
+
+{% extends "layouts/boilerplate.html" %}
+
+{% block body %}
+  <form action="{{ url_for('dashboard.login') }}" method="POST" name="login_user_form" class="form-signin">
+      <h2 class="form-signin-heading">Please sign in</h2>
+    {{ form.csrf_token }}
+    {{ render_field(form.email, placeholder="Email address", class="input-block-level") }}
+    {{ render_field(form.password, placeholder="Password", class="input-block-level") }}
+    {{ render_field(form.remember) }}
+    <input type="submit" value="SIGN IN" class="btn btn-success">
+  </form>
+{% endblock %}

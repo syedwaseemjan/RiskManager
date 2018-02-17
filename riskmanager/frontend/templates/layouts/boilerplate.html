@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>{% block page_title %}OnlineAddressBook{% endblock %}</title>
+    {% assets "css_all" -%}
+      <link rel="stylesheet" href="{{ ASSET_URL }}">
+    {%- endassets %}
+  </head>
+  <body>
+    {% include "layouts/_menu.html" %}
+    <div class="container">
+      {% block flash_messages %}
+        {% include "layouts/_messages.html" %}
+      {% endblock %}
+      {% block body %}
+        Body
+      {% endblock %}
+    </div>
+    {% assets "js_vendor" -%}
+      <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    {% assets "js_main" -%}
+      <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+  </body>
+</html>
