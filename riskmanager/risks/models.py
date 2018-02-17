@@ -18,7 +18,7 @@ class User(UserJsonSerializer, db.Model, TimeStampMixin):
 
 
 class RiskJsonSerializer(JsonSerializer):
-    pass
+    __json_hidden__ = ['insurer_id']
 
 
 class Risk(RiskJsonSerializer, db.Model, TimeStampMixin):
@@ -28,6 +28,8 @@ class Risk(RiskJsonSerializer, db.Model, TimeStampMixin):
     insurer_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     name = db.Column(db.String(120), nullable=False)
     details = db.Column(db.Text)
+
+    insurer = db.relationship('User')
 
     def __str__(self):
         return u'{0}-{1}-{2}-{3}'.format(self.id, self.insurer_id, self.name, self.details)

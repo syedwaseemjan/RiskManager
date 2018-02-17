@@ -10,24 +10,23 @@ from unittest import TestCase
 
 from riskmanager.extensions import db
 
-from .factories import AdminFactory
 from .utils import FlaskTestCaseMixin
 
 
-class BookTestCase(TestCase):
+class ManagerTestCase(TestCase):
     pass
 
 
-class AddressBookAppTestCase(FlaskTestCaseMixin, BookTestCase):
+class RiskManagerAppTestCase(FlaskTestCaseMixin, ManagerTestCase):
 
     def _create_app(self):
         raise NotImplementedError
 
     def _create_fixtures(self):
-        self.user = AdminFactory()
+        pass
 
     def setUp(self):
-        super(AddressBookAppTestCase, self).setUp()
+        super(RiskManagerAppTestCase, self).setUp()
         self.app = self._create_app()
         self.client = self.app.test_client()
         self.app_context = self.app.app_context()
@@ -37,12 +36,6 @@ class AddressBookAppTestCase(FlaskTestCaseMixin, BookTestCase):
         self._create_csrf_token()
 
     def tearDown(self):
-        super(AddressBookAppTestCase, self).tearDown()
+        super(RiskManagerAppTestCase, self).tearDown()
         db.drop_all()
         self.app_context.pop()
-
-    def _login(self, email=None, password=None):
-        email = email or self.user.email
-        password = password or 'password'
-        return self.post('/login', data={'email': email, 'password': password},
-                         follow_redirects=False)

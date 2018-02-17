@@ -11,12 +11,12 @@ from flask_assets import Environment, Bundle
 
 #: consolidated css bundle
 css_all = Bundle("css/bootstrap.min.css", "css/risk_manager.css",
-                 "css/bootstrap-responsive.min.css",
+                 "css/bootstrap-grid.min.css",
                  filters="cssmin", output="css/risk_manager.min.css")
 
 #: vendor js bundle
-js_vendor = Bundle("js/vendor/jquery-1.10.1.min.js",
-                   "js/vendor/bootstrap-2.3.3.min.js",
+js_vendor = Bundle("js/vendor/jquery-3.3.1.min.js",
+                   "js/vendor/bootstrap-4.0.0-alpha.6.min.js",
                    "js/vendor/underscore-1.4.4.min.js",
                    filters="jsmin", output="js/vendor.min.js")
 

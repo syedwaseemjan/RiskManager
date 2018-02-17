@@ -1,29 +1,29 @@
 {% extends "layouts/boilerplate.html" %}
-
 {% block body %}
-  	
-  	<div class="section">
-		<a href="">Add New Group</a> / <a href="">Add New Person</a>
-  	</div>
-
-  	<div class="section search">
-		<div class="rowfluid">
-			<span>Enter Person Name:</span><input type="text"><button class="btn">Search</button>
-			<div class="found"><a hr></a></div>
-		</div>
-  	</div>
-
-	<div class="section">
-		<div class="rowfluid">
-			<div span="6"><ul id="grp-list-container"></ul></div>
-		</div>
-  	</div>
-
 	{% raw %}
-		<script id='grp-list-tpl' type="text/template">
-			<% _.each(data, function(acs) { %> 
-			    <li><a href="/groups/<%- acs.id %>"><%- acs.name %></a></li>
-			<% }); %>
-		</script>
-	{% endraw %}
+		<div class="section">
+			<h2>{{ risk.name }}</h2>
+			<div>{{ risk.details }}</div>
+	  	</div>
+	  	<div class="section">
+	  		<form action="#">
+				<div class="row" v-for="question in risk.questions">
+					<div class="col-sm-6">
+						<span>{{ question.text }}:</span>
+					</div>
+					<div class="col-sm-6">
+						<span v-if="question.type_.name != 'enum'" ><input :type="question.type_.name"></span>
+						<span v-if="question.type_.name == 'enum'" >
+							<select>
+								<option v-for="opt in question.options" :value="opt.id">
+									{{ opt.text }}
+								</option>
+							</select>
+						</span>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+	  	</div>
+  	{% endraw %}
 {% endblock %}

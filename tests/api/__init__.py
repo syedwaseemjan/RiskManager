@@ -8,14 +8,13 @@
 
 from riskmanager.api import create_app
 
-from .. import AddressBookAppTestCase, settings
+from .. import RiskManagerAppTestCase, settings
 
 
-class AddressBookApiTestCase(AddressBookAppTestCase):
+class RiskManagerApiTestCase(RiskManagerAppTestCase):
 
     def _create_app(self):
         return create_app(settings, register_security_blueprint=True)
 
     def setUp(self):
-        super(AddressBookApiTestCase, self).setUp()
-        self._login()
+        super(RiskManagerApiTestCase, self).setUp()

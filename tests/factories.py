@@ -7,9 +7,8 @@
 """
 
 
-from factory import Sequence, LazyAttribute
+from factory import Sequence
 from factory.alchemy import SQLAlchemyModelFactory
-from passlib.hash import bcrypt
 
 from riskmanager.extensions import db
 from riskmanager.models import *
@@ -20,40 +19,27 @@ class BaseFactory(SQLAlchemyModelFactory):
         sqlalchemy_session = db.session
 
 
-class AdminFactory(BaseFactory):
+class UserFactory(BaseFactory):
     class Meta:
-        model = Admin
-    email = Sequence(lambda n: 'user{0}@riskmanager.com'.format(n))
-    _password = LazyAttribute(lambda a: bcrypt.encrypt('password'))
-    active = True
-
-
-class PersonFactory(BaseFactory):
-    class Meta:
-        model = Person
-    first_name = Sequence(lambda n: 'Person First Name {0}'.format(n))
-    last_name = Sequence(lambda n: 'Person Last Name {0}'.format(n))
-
-
-class AddressFactory(BaseFactory):
-    class Meta:
-        model = Address
-    address = Sequence(lambda n: 'Address {0}'.format(n))
-
-
-class EmailFactory(BaseFactory):
-    class Meta:
-        model = Email
+        model = User
+    name = Sequence(lambda n: 'Person Name {0}'.format(n))
     email = Sequence(lambda n: 'user{0}@riskmanager.com'.format(n))
 
 
-class PhoneFactory(BaseFactory):
+class RiskFactory(BaseFactory):
     class Meta:
-        model = Phone
-    phone = Sequence(lambda n: 'Phone Number {0}'.format(n))
+        model = Risk
+    name = Sequence(lambda n: 'Risk Name {0}'.format(n))
+    details = Sequence(lambda n: 'Risk Details {0}'.format(n))
 
 
-class GroupFactory(BaseFactory):
+class QuestionFactory(BaseFactory):
     class Meta:
-        model = Group
-    name = Sequence(lambda n: 'Group Number {0}'.format(n))
+        model = Question
+    text = Sequence(lambda n: 'Question Text {0}'.format(n))
+
+
+class FieldTypeFactory(BaseFactory):
+    class Meta:
+        model = FieldType
+    name = Sequence(lambda n: 'Field Type Name {0}'.format(n))

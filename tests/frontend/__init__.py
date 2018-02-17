@@ -8,14 +8,13 @@
 
 from riskmanager.frontend import create_app
 
-from .. import AddressBookAppTestCase, settings
+from .. import RiskManagerAppTestCase, settings
 
 
-class AddressBookFrontendTestCase(AddressBookAppTestCase):
+class RiskManagerFrontendTestCase(RiskManagerAppTestCase):
 
     def _create_app(self):
         return create_app(settings)
 
     def setUp(self):
-        super(AddressBookFrontendTestCase, self).setUp()
-        self._login()
+        super(RiskManagerFrontendTestCase, self).setUp()

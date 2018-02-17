@@ -6,7 +6,6 @@
     test utilities
 """
 
-import base64
 import hmac
 
 from datetime import datetime, timedelta
@@ -15,13 +14,6 @@ from hashlib import sha1
 import simplejson as json
 
 from werkzeug.utils import parse_cookie
-
-
-def get_auth_headers(username=None, password=None):
-    username = username or 'username'
-    password = password or 'password'
-    encoded = base64.b64encode('%s:%s' % (username, password))
-    return {'Authorization': 'Basic ' + encoded}
 
 
 class FlaskTestCaseMixin(object):

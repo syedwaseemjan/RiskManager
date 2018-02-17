@@ -56,7 +56,7 @@ def init_db():
     risk.name = 'Cyber Liability Coverage'
     risk.details = 'Cyber Liability Coverage Details'
 
-    risk.questions.append(Question(type_id=text_field.id, text='Fullname'))
+    risk.questions.append(Question(type_id=date_field.id, text='What is your date of birth'))
     risk.questions.append(Question(type_id=num_field.id, text='What is your Age?'))
     question = Question(type_id=enum_field.id, text='Number of employees')
     question.options.append(Question(text='Less than 10'))
