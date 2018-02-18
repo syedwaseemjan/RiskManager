@@ -53,6 +53,9 @@ class FlaskTestCaseMixin(object):
     def _jrequest(self, *args, **kwargs):
         return self._request(*args, **kwargs)
 
+    def to_json(self, response):
+        return json.loads(response.get_data(as_text=True))['data']
+
     def get(self, *args, **kwargs):
         return self._request(self.client.get, *args, **kwargs)
 

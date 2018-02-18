@@ -65,7 +65,6 @@ class Question(QuestionJsonSerializer, db.Model, TimeStampMixin):
     '''
     text = db.Column(db.String)
 
-    #is_required = db.Column(db.Bool)
     # if a field is a subfield of enum then it will have parent id too.
     # Field with type Enum could only be a parent of other fields.
     parent_id = db.Column(db.Integer, db.ForeignKey('questions.id'))
@@ -76,21 +75,6 @@ class Question(QuestionJsonSerializer, db.Model, TimeStampMixin):
 
     def __str__(self):
         return u'{0}-{1}-{2}-{3}-{4}'.format(self.id, self.risk_id, self.type_id, self.text, self.text, self.parent_id)
-
-
-"""
-class Validation(FieldJsonSerializer, db.Model):
-    __tablename__ = 'validations'
-
-    id = db.Column(db.Integer, primary_key=True)
-    field_id = db.Column(db.Integer, db.ForeignKey('fields.id'))
-    type_id = db.Column(db.Integer, db.ForeignKey('field_types.id'))
-
-    name = db.Column(db.Integer)
-    is_required = db.Column(db.Bool)
-
-    type_ = db.relationship('FieldType', backref=db.backref('risk'))
-"""
 
 
 class FieldTypeJsonSerializer(JsonSerializer):

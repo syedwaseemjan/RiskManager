@@ -1,0 +1,147 @@
+openapi: "3.0.0"
+
+info:
+  version: "1.0.0"
+  title: Risk Manager
+
+servers: [
+  {
+    url: "http://127.0.0.1:5000/api/v1",
+    description: "Local server"
+  },
+  {
+    url: "https://staging.riskmanager-server.com/api/v1",
+    description: "Staging server"
+  },
+  { 
+    url: "https://api.riskmanager-server.com/api/v1",
+    description: "Production server"
+  }
+]
+
+paths:
+  /risks:
+    get:
+      summary:
+        Serves all available insurance offers.
+      description: >
+        Servers all available insurance offers dynamically created by insurer
+        with their custom fields.
+      tags:
+        [risk]
+      responses:
+        200:
+          description: The list of risks
+          content:
+            application/json:
+              schema:
+                type: object 
+                properties: 
+                  data: 
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/risk'
+          links:
+            GetRiskByRiskId:
+              operationId: getRisk
+              parameters:
+                risk_id: '$response.body#/data[0]/id'
+              description: >
+                The `id` value returned in the response can be used as
+                the `risk_id` parameter in `GET /risks/{risk_id}`
+  /risks/{risk_id}:
+    get:
+      summary:
+        Serves an insurance for a given ID.
+      description: >
+        Serves just a single risk object.
+      operationId: getRisk
+      parameters:
+        - name: risk_id
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+      tags:
+        [risk]
+      responses:
+        200:
+          description: The risk object
+          content:
+            application/json:
+              schema: 
+                type: object 
+                properties: 
+                  data: 
+                    type: object
+                    $ref: '#/components/schemas/risk'
+components:
+  schemas: 
+    risk: 
+      type: object
+      properties: 
+        id: 
+          type: integer
+        name: 
+          type: string
+        details: 
+          type: string
+        created_on:
+          type: string
+        update_on:
+          type: string
+        insurer: 
+          type: object
+          $ref: '#/components/schemas/user'
+        questions:
+          type: array
+          $ref: '#/components/schemas/question'
+    user: 
+      type: object
+      properties: 
+        id: 
+          type: integer
+        name: 
+          type: string
+        email: 
+          type: string
+        created_on:
+          type: string
+        update_on:
+          type: string
+    question: 
+      type: object
+      properties: 
+        id: 
+          type: integer
+        risk_id: 
+          type: integer
+        text: 
+          type: string
+        created_on:
+          type: string
+        update_on:
+          type: string
+        type_: 
+          type: object
+          $ref: '#/components/schemas/field_type'
+        options:
+          type: array
+          $ref: '#/components/schemas/option'
+    option: 
+      type: object
+      properties: 
+        id: 
+          type: integer
+        parent_id: 
+          type: integer
+        text: 
+          type: string
+    field_type: 
+      type: object
+      properties: 
+        id: 
+          type: integer
+        name: 
+          type: string
