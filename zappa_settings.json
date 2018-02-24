@@ -1,0 +1,16 @@
+{
+    "dev": {
+        "app_function": "runserver.application", 
+        "aws_region": "us-east-1", 
+        "profile_name": "default", 
+        "project_name": "riskmanager", 
+        "runtime": "python2.7", 
+        "s3_bucket": "zappa-ksximq873",
+        "debug": true,
+        "log_level": "DEBUG",
+        "delete_local_zip": true,
+        "environment_variables": {
+            "env": "dev"
+        }
+    }
+}

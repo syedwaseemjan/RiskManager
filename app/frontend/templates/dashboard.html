@@ -1,0 +1,29 @@
+{% extends "layouts/boilerplate.html" %}
+{% block body %}
+	{% raw %}
+		<div class="section">
+			<h2>{{ risk.name }}</h2>
+			<div>{{ risk.details }}</div>
+	  	</div>
+	  	<div class="section">
+	  		<form action="#">
+				<div class="row" v-for="question in risk.questions">
+					<div class="col-sm-6">
+						<span>{{ question.text }}:</span>
+					</div>
+					<div class="col-sm-6">
+						<span v-if="question.type_.name != 'enum'" ><input :type="question.type_.name"></span>
+						<span v-if="question.type_.name == 'enum'" >
+							<select>
+								<option v-for="opt in question.options" :value="opt.id">
+									{{ opt.text }}
+								</option>
+							</select>
+						</span>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+	  	</div>
+  	{% endraw %}
+{% endblock %}

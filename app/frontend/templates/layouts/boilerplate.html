@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block page_title %}Risk Manager{% endblock %}</title>
+    {% assets "css_all" -%}
+      <link rel="stylesheet" href="{{ ASSET_URL }}">
+    {%- endassets %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    {% include "layouts/_menu.html" %}
+    <input type="hidden" name="env" value={{env}}>
+    <div id="main" class="container-fluid">
+      {% block flash_messages %}
+        {% include "layouts/_messages.html" %}
+      {% endblock %}
+      {% block body %}
+        Body
+      {% endblock %}
+    </div>
+
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    {% assets "js_vendor" %}
+      <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    {% assets "js_main" %}
+      <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+
+  </body>
+</html>
