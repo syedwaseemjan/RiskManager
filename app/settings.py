@@ -6,7 +6,7 @@
     riskmanager settings module
 """
 
-DEBUG = True
+DEBUG = False
 SQLALCHEMY_ECHO = False
 WTF_CSRF_ENABLED = False
 SECRET_KEY = 'super-secret-key'
