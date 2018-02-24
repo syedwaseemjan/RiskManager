@@ -6,7 +6,7 @@
     frontend tests package
 """
 
-from riskmanager.frontend import create_app
+from app.frontend import create_app
 
 from .. import RiskManagerAppTestCase, settings
 

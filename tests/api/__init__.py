@@ -6,7 +6,7 @@
     api tests package
 """
 
-from riskmanager.api import create_app
+from app.api import create_app
 
 from .. import RiskManagerAppTestCase, settings
 

@@ -8,7 +8,7 @@
 
 from unittest import TestCase
 
-from riskmanager.extensions import db
+from app.extensions import db
 
 from .utils import FlaskTestCaseMixin
 

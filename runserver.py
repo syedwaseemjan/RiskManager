@@ -9,7 +9,7 @@
 from werkzeug.serving import run_simple
 from werkzeug.wsgi import DispatcherMiddleware
 
-from riskmanager import api, frontend
+from app import api, frontend
 
 application = DispatcherMiddleware(frontend.create_app(), {
     '/api/v1': api.create_app()

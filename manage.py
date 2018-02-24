@@ -1,8 +1,8 @@
 from flask_script import Manager
 
-from riskmanager.api import create_app
-from riskmanager.extensions import db
-from riskmanager.models import User, Risk, Question, FieldType
+from app.api import create_app
+from app.extensions import db
+from app.models import User, Risk, Question, FieldType
 
 manager = Manager(create_app())
 

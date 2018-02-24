@@ -9,8 +9,8 @@
 import factory
 from factory.alchemy import SQLAlchemyModelFactory
 
-from riskmanager.extensions import db
-from riskmanager.models import *
+from app.extensions import db
+from app.models import *
 
 
 class BaseFactory(SQLAlchemyModelFactory):

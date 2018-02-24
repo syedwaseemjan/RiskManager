@@ -25,7 +25,7 @@ paths:
       summary:
         Serves all available insurance offers.
       description: >
-        Servers all available insurance offers dynamically created by insurer
+        Serves all available insurance offers dynamically created by insurer
         with their custom fields.
       tags:
         [risk]
