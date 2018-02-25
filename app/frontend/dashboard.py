@@ -11,4 +11,4 @@ bp = Blueprint('dashboard', __name__,
 
 @bp.route('/')
 def index():
-    return render_template('index.html', env=os.environ.get('env') or 'Kutta')
+    return render_template('index.html', env=os.environ.get('env') or '')

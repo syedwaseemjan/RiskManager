@@ -19,7 +19,7 @@ def create_app(package_name, package_path, settings_override=None,
                                         Blueprint should be registered.
                                         Defaults to `True`.
     """
-    print(dir(Flask))
+
     app = Flask(package_name, instance_relative_config=True,
                 static_url_path='/dist',
                 static_folder=os.path.join(PROJECT_ROOT, 'frontend/app/dist'))
