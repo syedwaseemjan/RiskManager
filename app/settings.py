@@ -5,7 +5,8 @@
 
     riskmanager settings module
 """
-
+import os
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 DEBUG = False
 SQLALCHEMY_ECHO = False
 WTF_CSRF_ENABLED = False

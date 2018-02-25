@@ -4,12 +4,13 @@ from flask import Flask
 
 from app.extensions import db
 from app.utils import register_blueprints
+from settings import PROJECT_ROOT
 
 
 def create_app(package_name, package_path, settings_override=None,
                register_security_blueprint=True):
     """Returns a :class:`Flask` application instance configured with common
-    functionality for the OnlineAddressBook platform.
+    functionality for the RiskManager platform.
 
     :param package_name: application package name
     :param package_path: application package path
@@ -18,7 +19,10 @@ def create_app(package_name, package_path, settings_override=None,
                                         Blueprint should be registered.
                                         Defaults to `True`.
     """
-    app = Flask(package_name, instance_relative_config=True)
+    print(dir(Flask))
+    app = Flask(package_name, instance_relative_config=True,
+                static_url_path='/dist',
+                static_folder=os.path.join(PROJECT_ROOT, 'frontend/app/dist'))
 
     app.config.from_object('app.settings')
     app.config.from_pyfile('settings.cfg', silent=True)
@@ -34,5 +38,12 @@ def create_app(package_name, package_path, settings_override=None,
     db.init_app(app)
 
     register_blueprints(app, package_name, package_path)
+
+    @app.after_request
+    def after_request(response):
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+        response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+        return response
 
     return app

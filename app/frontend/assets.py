@@ -9,24 +9,12 @@
 from flask_assets import Environment, Bundle
 
 
-#: consolidated css bundle
-css_all = Bundle("css/bootstrap.min.css", "css/risk_manager.css",
-                 filters="cssmin", output="css/risk_manager.min.css")
-
-#: vendor js bundle
-js_vendor = Bundle("js/vendor/jquery-3.3.1.min.js",
-                   "js/vendor/bootstrap.min.js",
-                   filters="jsmin", output="js/vendor.min.js")
-
-#: application js bundle
-js_main = Bundle("js/*.js", filters="jsmin", output="js/main.min.js")
+js_build = Bundle("*.js", output="build.js")
 
 
 def init_app(app):
     webassets = Environment(app)
-    webassets.register('css_all', css_all)
-    webassets.register('js_vendor', js_vendor)
-    webassets.register('js_main', js_main)
+    webassets.register('js_build', js_build)
     webassets.manifest = 'cache' if not app.debug else False
     webassets.cache = not app.debug
     webassets.debug = app.debug

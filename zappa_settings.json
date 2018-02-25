@@ -11,6 +11,7 @@
         "delete_local_zip": true,
         "environment_variables": {
             "env": "dev"
-        }
+        },
+        "exclude": ["node_modules"]
     }
 }

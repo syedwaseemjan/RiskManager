@@ -3,7 +3,7 @@
     tests.factories
     ~~~~~~~~~~~~~~~
 
-    OnlineAddressBook test factories module
+    RiskManager test factories module
 """
 
 import factory

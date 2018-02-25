@@ -9,7 +9,7 @@ Sqlite DB is used for storing data. Sqlalchemy is used to help with the queries.
 2. Frontend
 
 Restful API is used for CRUD operations. Frontend application is used for serving static files(CSS, JS, HTML).
-Frontend is developed in Vue Framework. Dashboard.js is reponsible for doing all ajax requests to API.
+Frontend is developed in Vue Framework. dashboard.py loads index.html from where Vue.js based frontend gets generated. 
 
 Functional tests are added for testing all the endpoints. I am using 
 
@@ -23,6 +23,7 @@ At the bare minimum you'll need the following for your development environment:
 
 1. [Python](http://www.python.org/)
 2. [Sqlite](https://sqlite.org)
+3. [Node](https://nodejs.org/en/). I have used npm to build the vuejs frontend. It also helps with hot reloading during development.
 
 ### Local Setup
 
@@ -40,7 +41,7 @@ The following assumes you have all of the recommended tools listed above install
     $ source manager_virtualenv/bin/activate
     $ pip install -r requirements.txt
 
-#### 3. Setup the Sqlite DB (Add default admin user):
+#### 3. Setup the Sqlite DB:
 
     $ python manage.py create_db
     $ python manage.py init_db
@@ -59,14 +60,18 @@ The following assumes you have all of the recommended tools listed above install
 
     Visit http://127.0.0.1:5000
 
+### Development:
+    For frontend run the following.
+    $ npm run dev
+    $ npm run build (Before running this command you need to remove "assets" tags from index.html. These tags are used when we load index.html through flask.)
 
 ## API Documentation:
 
-REST API documentation (OpenAPI specification based) is provided in docs folder. It can be verified by using [swagger online editor](https://swagger.io/swagger-editor/).
+REST API documentation (OpenAPI specification based) is provided in docs folder. It can be verified by using [swagger online editor](https://swagger.io/swagger-editor/). Also, Database ER diagram is in docs folder.
 
 ## Deployment:
 
-I have deployed this project on AWS Lambda with the help of [zappa](https://github.com/Miserlou/Zappa#setting-environment-variables). Currently it can be viewed here.
+I have deployed this project on AWS Lambda with the help of [zappa](https://github.com/Miserlou/Zappa). Currently it can be viewed here.
 
 https://y16svgzfa2.execute-api.us-east-1.amazonaws.com/dev
 
@@ -106,10 +111,15 @@ https://y16svgzfa2.execute-api.us-east-1.amazonaws.com/dev
             ]
         }
 
-#### 1. Create Named Profile on your local machine. It will be used by boto:
+#### 3. Create Named Profile on your local machine. It will be used by boto:
 
     $ aws configure
     $ AWS Access Key ID [None]: *********
     $ AWS Secret Access Key [None]: **************
     $ Default region name [None]: us-east-1
     $ Default output format [None]: json
+
+#### 3. Use Zappa commands to deploy it:
+
+    $ zappa deploy dev
+    $ zappa update dev
