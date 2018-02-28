@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    tests.api.user_tests
+    tests.frontend.dashboard_tests
     ~~~~~~~~~~~~~~~~~~~~
 
-    api user tests module
+    frontend dashboard tests module
 """
 
 from . import RiskManagerFrontendTestCase
@@ -11,7 +11,7 @@ from . import RiskManagerFrontendTestCase
 
 class DashboardTestCase(RiskManagerFrontendTestCase):
 
-    def test_authenticated_dashboard_access(self):
+    def test_dashboard_access(self):
         r = self.get('/')
         self.assertOk(r)
         self.assertIn('Risk Manager', r.data)

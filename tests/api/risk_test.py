@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    tests.api.group_tests
+    tests.api.risk_tests
     ~~~~~~~~~~~~~~~~~~~~~
 
-    api group tests module
+    api risk tests module
 """
 
 from ..factories import RiskFactory, UserFactory, QuestionFactory, FieldTypeFactory
