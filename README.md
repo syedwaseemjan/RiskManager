@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/syedwaseemjan/RiskManager.svg?branch=master)](https://travis-ci.org/syedwaseemjan/RiskManager)
 # RiskManager
 An example web-based app to demonstrate the database schema for Insurance business.
 
