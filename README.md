@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/syedwaseemjan/RiskManager.svg?branch=master)](https://travis-ci.org/syedwaseemjan/RiskManager)
 # RiskManager
-An example web-based app to demonstrate the database schema for Insurance business.
+An example web-based app to demonstrate the database schema for Insurance business, well documented (through swagger) and tested (through nosetests) Rest API, a clean single page vuejs frontend application, continuous integration with Tavis CI and a serverless deployment on AWS Lambda through zappa.
 
 ## Concept
 
