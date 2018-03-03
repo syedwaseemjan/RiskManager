@@ -23,7 +23,7 @@ At the bare minimum you'll need the following for your development environment:
 
 1. [Python](http://www.python.org/)
 2. [Sqlite](https://sqlite.org)
-3. [Node](https://nodejs.org/en/). I have used npm to build the vuejs frontend. It also helps with hot reloading during development.
+3. [Node](https://nodejs.org/en/).
 
 ### Local Setup
 
@@ -67,8 +67,8 @@ Do it only if you have made any changes in the frontend code otherwise I have al
     Visit http://127.0.0.1:5000
 
 ### Development:
-
-    For frontend run the following.
+For local development, I run both the Flask Development Server in parallel to webpack-dev-server. This allows me to serve the Flask api endpoint while still taking advantage of the hot-reload and eslinter.
+    
     $ cd app/frontend/app
     $ npm run dev (Before running this command you need to remove "assets" tags from index.html. These tags are used when we load index.html through flask.)
 
