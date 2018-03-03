@@ -10,6 +10,7 @@ before_install:
 install:
   - cd app/frontend/app
   - npm install
+  - npm run build
   - cd -
   - pip install -r requirements.txt
 script:
