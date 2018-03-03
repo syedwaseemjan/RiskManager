@@ -1,10 +1,22 @@
 language: python
 python:
   - "2.7"
+before_install:
+  - v=8
+  - curl -sL https://deb.nodesource.com/setup_$v.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
+  - nodejs -v
+  - which nodejs
 install:
+  - cd app/frontend/app
+  - npm install
+  - cd -
   - pip install -r requirements.txt
 script:
   - nosetests -v
+branches:
+  only:
+    - master
 notifications:
   email:
     - syedwaseemjan@gmail.com

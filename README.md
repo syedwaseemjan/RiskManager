@@ -10,8 +10,7 @@ Sqlite DB is used for storing data. Sqlalchemy is used to help with the queries.
 2. Frontend
 
 Restful API is used for CRUD operations. Frontend application is used for serving static files(CSS, JS, HTML).
-Frontend is developed in Vue Framework. dashboard.py loads index.html from where Vue.js based frontend gets generated. 
-
+and is developed in Vue Framework. I have built the frontend through webpack. dashboard.py loads index.html from where Vue.js based frontend gets generated.
 Functional tests are added for testing all the endpoints. I am using 
 
 1. Nose
@@ -53,6 +52,12 @@ The following assumes you have all of the recommended tools listed above install
     $ chmod -x $(find tests/ -name '*.py')  - (To make your testcase files not executable. This command is tested on MAC only)
     $ nosetests -v
 
+### Build the frontend (Optional):
+Do it only if you have made any changes in the frontend code otherwise I have already pushed build.js in dist folder.
+
+    $ cd app/frontend/app
+    $ npm run build
+
 #### 5. Run the server:
 
     $ python runserver.py
@@ -62,9 +67,10 @@ The following assumes you have all of the recommended tools listed above install
     Visit http://127.0.0.1:5000
 
 ### Development:
+
     For frontend run the following.
-    $ npm run dev
-    $ npm run build (Before running this command you need to remove "assets" tags from index.html. These tags are used when we load index.html through flask.)
+    $ cd app/frontend/app
+    $ npm run dev (Before running this command you need to remove "assets" tags from index.html. These tags are used when we load index.html through flask.)
 
 ## API Documentation:
 
